@@ -1,22 +1,24 @@
-export const sidebarItems = [
+import { sidebarItem } from '../interfaces/siderbar-item.interface';
+
+export const sidebarItems: sidebarItem[] = [
   {
     title: 'sport',
     icon: 'sport.svg',
-    route: '',
+    route: '/sport',
   },
   {
     title: 'live',
     icon: 'live.svg',
-    route: '',
+    route: '/live',
   },
   {
     title: 'slots',
     icon: 'slots.svg',
-    route: '',
+    route: '/slots',
   },
   {
     title: 'casino',
     icon: 'casino.svg',
-    route: '',
+    route: '/casino',
   },
 ];

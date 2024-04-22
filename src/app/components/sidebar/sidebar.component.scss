@@ -7,7 +7,6 @@
   content: "";
   position: absolute;
   top: 50%;
-  left: -10px;
   width: 3px;
   height: 77px;
   transform: translateY(-50%);
@@ -21,14 +20,16 @@
   position: fixed;
 
   height: 100vh;
-  width: fit-content;
-  padding: 10px;
+  width: 77px;
+  padding-top: 10px;
 
   background-color: #2a3139;
   z-index: 10000;
 
   &-logo {
     margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
   }
 
   ul {
@@ -44,11 +45,25 @@
       }
     }
 
+    .item-active {
+      a {
+        color: white;
+        filter: brightness(0) invert(1);
+      }
+      position: relative;
+
+      &::after {
+        @include green-border();
+      }
+    }
+
     a {
       @include flex-column();
       align-items: center;
       gap: 10px;
       cursor: pointer;
+      text-decoration: none;
+      color: inherit;
 
       span {
         font-size: 14px;
@@ -57,6 +72,7 @@
 
       &:hover {
         color: white;
+        transition: 0.3s;
         filter: brightness(0) invert(1);
       }
     }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { sidebarItems } from '../../shared/consts/sidebar-items';
+import { sidebarItem } from '../../shared/interfaces/siderbar-item.interface';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,5 +11,5 @@ import { sidebarItems } from '../../shared/consts/sidebar-items';
   styleUrl: './sidebar.component.scss',
 })
 export class SidebarComponent {
-  sidebarItems = sidebarItems;
+  sidebarItems: sidebarItem[] = sidebarItems;
 }
