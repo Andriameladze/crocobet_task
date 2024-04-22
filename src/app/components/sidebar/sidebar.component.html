@@ -1,0 +1,18 @@
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <a routerLink="/" routerLinkActive="router-link-active">
+      <img src="assets/icons/crocobet_logo.svg" />
+    </a>
+  </div>
+
+  <ul>
+    @for (item of sidebarItems; let i = $index; track i) {
+    <li>
+      <a>
+        <img [src]="'assets/icons/' + item.icon" alt="sidebar-icon" />
+        <span>{{ item.title }}</span>
+      </a>
+    </li>
+    }
+  </ul>
+</nav>
