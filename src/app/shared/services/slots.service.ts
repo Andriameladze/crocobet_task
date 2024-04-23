@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Provider } from '../interfaces/providers.interface';
+import { Provider } from '../interfaces/slot-providers.interface';
 import { map } from 'rxjs';
 
 @Injectable({
