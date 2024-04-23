@@ -1,0 +1,15 @@
+.slots-wrapper {
+  .header-bar {
+    height: 60px;
+    background-color: #252b33;
+  }
+
+  .content {
+    padding: 8px;
+
+    &-banner {
+      width: 100%;
+      margin-bottom: 8px;
+    }
+  }
+}
