@@ -13,6 +13,12 @@ export class SlotsService {
   private providersAPI = `${environment.crocobetAPI}?type=slot&platform=desktop`;
   private slotProvidersAPI = `${environment.crocobetAPI}/v2/slot/providers`;
 
+  getSlotsByCategory() {
+    return this.http
+      .get<any>(this.slotCategoriesAPI)
+      .pipe(map((res) => res.data));
+  }
+
   getProvidersList() {
     return this.http
       .get<{ data: Provider[] }>(this.providersAPI)

@@ -1,0 +1,15 @@
+<div class="slot-card">
+  <div class="grid-container first-item">
+    @for (slot of data[0].games; track $index) {
+    <div class="grid-item">
+      <div class="image-wrapper">
+        <img [src]="slot.image" />
+        <button class="play-btn" type="button">PLAY</button>
+      </div>
+      <div class="title">
+        <a>{{ slot.name }}</a>
+      </div>
+    </div>
+    }
+  </div>
+</div>

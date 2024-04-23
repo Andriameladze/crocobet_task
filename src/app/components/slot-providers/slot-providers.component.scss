@@ -1,3 +1,15 @@
+@mixin green-border() {
+  content: "";
+  position: absolute;
+  display: block;
+  bottom: -16px;
+  width: 100%;
+  height: 4px;
+  border-radius: 8px 8px 0 0;
+  transform: translateY(-50%);
+  background-color: #15af44;
+}
+
 .slot-providers {
   .list-open {
     height: fit-content;
@@ -23,19 +35,17 @@
       color: white;
       list-style: none;
 
+      .link-active {
+        &::after {
+          @include green-border();
+        }
+      }
+
       .link-wrapper {
         position: relative;
         &:hover {
           &::after {
-            content: "";
-            position: absolute;
-            display: block;
-            bottom: -16px;
-            width: 100%;
-            height: 4px;
-            border-radius: 8px 8px 0 0;
-            transform: translateY(-50%);
-            background-color: #15af44;
+            @include green-border();
           }
         }
       }
