@@ -1,0 +1,17 @@
+<div class="slot-providers">
+  <div class="slot-providers-wrapper" [ngClass]="{ 'list-open': isOpen }">
+    <div class="list">
+      @for (provider of data; track $index) {
+      <div class="link-wrapper">
+        <a>
+          {{ provider.name }}
+        </a>
+      </div>
+
+      }
+    </div>
+    <button class="see-more-btn" (click)="isOpen = !isOpen" type="button">
+      See More
+    </button>
+  </div>
+</div>
