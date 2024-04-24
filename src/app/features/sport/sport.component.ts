@@ -4,9 +4,16 @@ import { Component } from '@angular/core';
   selector: 'app-sport',
   standalone: true,
   imports: [],
-  templateUrl: './sport.component.html',
-  styleUrl: './sport.component.scss'
+  template: `<h1>SPORT COMING SOON!</h1> `,
+  styles: [
+    `
+      h1 {
+        text-align: center;
+        padding-top: 50px;
+        color: white;
+        font-size: 50px;
+      }
+    `,
+  ],
 })
-export class SportComponent {
-
-}
+export class SportComponent {}
