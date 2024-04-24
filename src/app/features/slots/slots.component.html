@@ -4,6 +4,8 @@
   <div class="content">
     <img class="content-banner" src="assets/images/slider.svg" alt="slider" />
 
+    <app-slot-categories [data]="categoriesList()"></app-slot-categories>
+
     <app-slot-providers [data]="providersList()"></app-slot-providers>
 
     <app-slot-card [data]="slotGames()"></app-slot-card>

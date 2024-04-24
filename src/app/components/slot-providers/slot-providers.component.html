@@ -3,7 +3,7 @@
     <div class="list">
       @for (provider of data; track $index) {
       <div class="link-wrapper" routerLinkActive="link-active">
-        <a routerLink="" [queryParams]="{ provider: provider.provider }">
+        <a routerLink="/" [queryParams]="{ provider: provider.provider }">
           {{ provider.name }}
         </a>
       </div>

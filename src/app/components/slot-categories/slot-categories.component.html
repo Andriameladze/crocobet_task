@@ -1,0 +1,25 @@
+<div class="slot-categories-wrapper">
+  @for (category of data; track $index) {
+  <div class="category-wrapper" routerLinkActive="category-active">
+    <span>{{ category.totalGames }}</span>
+
+    <a
+      routerLink="/"
+      [queryParams]="{ category: category.category }"
+      class="category-item"
+    >
+      @switch (category.category) { @case ('web:popular') {
+      <img src="assets/icons/popular.svg" />
+
+      } @case ('web:new_games') {
+      <img src="assets/icons/new-games.svg" />
+
+      } @case ('web:buy_bonus') {
+      <img src="assets/icons/buy-bonus.svg" />
+
+      }}
+      <p>{{ category.name }}</p>
+    </a>
+  </div>
+  }
+</div>
