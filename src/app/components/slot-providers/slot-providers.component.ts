@@ -4,7 +4,6 @@ import {
   Component,
   EventEmitter,
   Input,
-  Output,
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Provider } from '../../shared/interfaces/slot-providers.interface';
@@ -19,6 +18,5 @@ import { Provider } from '../../shared/interfaces/slot-providers.interface';
 })
 export class SlotProvidersComponent {
   @Input({ required: true }) data?: Provider[];
-  @Output() onProviderChange = new EventEmitter<string>();
   isOpen = false;
 }

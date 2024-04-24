@@ -1,12 +1,6 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-} from '@angular/core';
-import { SlotCategory } from '../../shared/interfaces/slot-category.interface';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { SlotCategory } from '../../shared/interfaces/slot-category.interface';
 
 @Component({
   selector: 'app-slot-categories',
@@ -18,5 +12,4 @@ import { RouterModule } from '@angular/router';
 })
 export class SlotCategoriesComponent {
   @Input({ required: true }) data?: SlotCategory[];
-  @Output() onCategoryChange = new EventEmitter<string>();
 }
