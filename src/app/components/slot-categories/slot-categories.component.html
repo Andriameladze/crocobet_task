@@ -4,6 +4,7 @@
     <span>{{ category.totalGames }}</span>
 
     <a
+      (click)="onCategoryChange.emit(category.category)"
       routerLink="/"
       [queryParams]="{ category: category.category }"
       class="category-item"

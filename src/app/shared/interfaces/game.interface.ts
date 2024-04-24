@@ -9,7 +9,7 @@ export interface Game {
   url: string;
   order: number;
   tags: string[];
-  stats: any[];
+  stats: any[]; // Couldn't find its type
   favoriteCount: number;
   gameId: string;
   image2: string;

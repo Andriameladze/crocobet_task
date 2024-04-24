@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Provider } from '../interfaces/slot-providers.interface';
+import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
+import { environment } from '../../../environments/environment';
 import { SlotCategory } from '../interfaces/slot-category.interface';
+import { Provider } from '../interfaces/slot-providers.interface';
+import { SlotsByProviders } from '../interfaces/slots-by-providers.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -14,10 +15,18 @@ export class SlotsService {
   private providersAPI = `${environment.crocobetAPI}?type=slot&platform=desktop`;
   private slotsByProvidersAPI = `${environment.crocobetAPI}/v2/slot/providers`;
 
-  getSlotsByCategory() {
+  getSlotsByCategory(category?: string) {
     return this.http
-      .get<any>(this.slotCategoriesAPI)
-      .pipe(map((res) => res.data));
+      .get<{ data: SlotCategory[] }>(this.slotCategoriesAPI)
+      .pipe(
+        map((res) =>
+          category
+            ? res.data.filter(
+                (item: { category: string }) => item.category === category
+              )[0]?.games
+            : res.data[0].games || []
+        )
+      );
   }
 
   getProvidersList() {
@@ -33,5 +42,13 @@ export class SlotsService {
       .pipe(
         map((res) => res.data.filter((e) => categoryKeys.includes(e.category)))
       );
+  }
+
+  getSlotsByProvider(provider: string) {
+    return this.http
+      .get<{ data: SlotsByProviders }>(
+        `${this.slotsByProvidersAPI}/${provider}`
+      )
+      .pipe(map((res) => res.data.games));
   }
 }

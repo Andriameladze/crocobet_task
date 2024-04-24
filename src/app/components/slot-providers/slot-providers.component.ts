@@ -1,13 +1,13 @@
+import { CommonModule } from '@angular/common';
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   Input,
-  OnInit,
+  Output,
 } from '@angular/core';
-import { Provider } from '../../shared/interfaces/slot-providers.interface';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Provider } from '../../shared/interfaces/slot-providers.interface';
 
 @Component({
   selector: 'app-slot-providers',
@@ -19,5 +19,6 @@ import { RouterModule } from '@angular/router';
 })
 export class SlotProvidersComponent {
   @Input({ required: true }) data?: Provider[];
+  @Output() onProviderChange = new EventEmitter<string>();
   isOpen = false;
 }
