@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-slot-card',
@@ -6,6 +6,7 @@ import { Component, Input } from '@angular/core';
   imports: [],
   templateUrl: './slot-card.component.html',
   styleUrl: './slot-card.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SlotCardComponent {
   @Input() data!: any;

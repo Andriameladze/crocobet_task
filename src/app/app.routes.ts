@@ -28,4 +28,8 @@ export const routes: Routes = [
         (m) => m.CasinoComponent
       ),
   },
+  {
+    path: '**',
+    redirectTo: 'slots',
+  },
 ];
