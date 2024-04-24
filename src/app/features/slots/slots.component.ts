@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, interval, takeUntil } from 'rxjs';
 import { SlotCardComponent } from '../../components/slot-card/slot-card.component';
 import { SlotCategoriesComponent } from '../../components/slot-categories/slot-categories.component';
 import { SlotProvidersComponent } from '../../components/slot-providers/slot-providers.component';
 import { Game } from '../../shared/interfaces/game.interface';
 import { SlotsService } from '../../shared/services/slots.service';
+import { Unsub } from '../../shared/utils/unsub.class';
 
 @Component({
   selector: 'app-slots',
@@ -17,7 +18,7 @@ import { SlotsService } from '../../shared/services/slots.service';
   providers: [SlotsService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SlotsComponent implements OnInit {
+export class SlotsComponent extends Unsub implements OnInit {
   providersList = toSignal(this.slotsService.getProvidersList());
   categoriesList = toSignal(this.slotsService.getCategoriesList());
   slotGames?: Observable<Game[]>;
@@ -27,12 +28,14 @@ export class SlotsComponent implements OnInit {
   constructor(
     private slotsService: SlotsService,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    super();
+  }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params: Params) =>
-      this.getSlotGames(params)
-    );
+    this.route.queryParams
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((params: Params) => this.getSlotGames(params));
   }
 
   getSlotGames(params: Params) {
