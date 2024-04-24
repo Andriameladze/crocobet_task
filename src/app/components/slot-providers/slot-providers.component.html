@@ -13,8 +13,15 @@
       </div>
       }
     </div>
-    <button class="see-more-btn" (click)="isOpen = !isOpen" type="button">
-      See More
+    <button
+      [ngClass]="{ 'see-more-btn--open': isOpen }"
+      class="see-more-btn"
+      (click)="isOpen = !isOpen"
+      type="button"
+    >
+      {{ !isOpen ? "See More" : "See Less" }}
+
+      <img src="assets/icons/arrow.svg" />
     </button>
   </div>
 </div>
