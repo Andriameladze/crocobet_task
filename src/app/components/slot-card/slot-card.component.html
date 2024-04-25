@@ -2,6 +2,11 @@
   <div class="grid-container first-item">
     @for (slot of data | async; track $index) {
     <div class="grid-item">
+      @if (slot.tags.length) {
+      <div class="slot-tag">
+        {{ slot.tags[0] }}
+      </div>
+      }
       <div class="image-wrapper">
         <img [src]="slot.image" alt="image" />
         <button class="play-btn" type="button">PLAY</button>
