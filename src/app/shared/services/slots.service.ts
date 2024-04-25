@@ -16,17 +16,18 @@ export class SlotsService {
   private slotsByProvidersAPI = `${environment.crocobetAPI}/v2/slot/providers`;
 
   getSlotsByCategory(category?: string) {
-    return this.http
-      .get<{ data: SlotCategory[] }>(this.slotCategoriesAPI)
-      .pipe(
-        map((res) =>
-          category
-            ? res.data.filter(
-                (item: { category: string }) => item.category === category
-              )[0]?.games
-            : res.data[0].games || []
-        )
-      );
+    return this.http.get<{ data: SlotCategory[] }>(this.slotCategoriesAPI).pipe(
+      map((res) => {
+        const categoryEntry = res.data.find(
+          (item) => item.category === category
+        );
+        return categoryEntry
+          ? categoryEntry.games
+          : category
+          ? []
+          : res.data[0].games;
+      })
+    );
   }
 
   getProvidersList() {

@@ -8,16 +8,7 @@
       [queryParams]="{ category: category.category }"
       class="category-item"
     >
-      @switch (category.category) { @case ('web:popular') {
-      <img src="assets/icons/popular.svg" />
-
-      } @case ('web:new_games') {
-      <img src="assets/icons/new-games.svg" />
-
-      } @case ('web:buy_bonus') {
-      <img src="assets/icons/buy-bonus.svg" />
-
-      }}
+      <img [src]="category.category | imageSrc" alt="icon" />
       <p>{{ category.name }}</p>
     </a>
   </div>
