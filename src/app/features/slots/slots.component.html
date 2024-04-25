@@ -4,9 +4,11 @@
   <div class="content">
     <img class="content-banner" src="assets/images/slider.svg" alt="slider" />
 
-    <app-slot-categories [data]="categoriesList()"></app-slot-categories>
+    <div class="content-filters">
+      <app-slot-categories [data]="categoriesList()"></app-slot-categories>
 
-    <app-slot-providers [data]="providersList()"></app-slot-providers>
+      <app-slot-providers [data]="providersList()"></app-slot-providers>
+    </div>
 
     <app-slot-card [data]="slotGames"></app-slot-card>
   </div>
